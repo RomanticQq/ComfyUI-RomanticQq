@@ -9,7 +9,7 @@ import requests
 from minio import Minio
 from datetime import datetime, timedelta
 
-class SEEDEDIT:
+class Jimeng_Depth_2_Pro:
     def __init__(self):
         self.tmp_dir = os.path.join(os.path.dirname(__file__), "tmp")
         if not os.path.exists(self.tmp_dir):
@@ -26,13 +26,14 @@ class SEEDEDIT:
             "required": {
                 "prompt": ("STRING",),
                 "url": ("STRING",),
+                "strength": ("FLOAT", {"default": 0.80, "min": 0.0, "max": 1.0, "step": 0.01}),
             },
         }
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
     CATEGORY = "RomanticQq"
-    def test(self, prompt, url):
+    def test(self, prompt, url, strength):
         print("prompt: ", prompt)
         print("url: ", url)
         tmp_img_name = str(uuid.uuid4()) + ".jpg"
@@ -46,9 +47,18 @@ class SEEDEDIT:
                     "clientId": "F6010A0A000005",
                     "token": "c1970c0208d7430ebddae7041afc90d9",
                     "type": 3,
-                    "model": 59,
+                    "model": 67,
                     "imageUrl": url,
-                    "text": prompt
+                    "text": prompt,
+                    "parameters": {
+                            "controlnet_args": [
+                                {
+                                    "type": "depth",
+                                    "strength": strength,
+                                    "binary_data_index": 0
+                                }
+                            ]
+                        }
                 }   
                 json_data = json.dumps(data)
                 response = requests.post(self.url, headers=self.headers, data=json_data)

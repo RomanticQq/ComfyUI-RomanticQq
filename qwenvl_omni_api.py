@@ -9,7 +9,7 @@ import requests
 from minio import Minio
 from datetime import datetime, timedelta
 
-class SEEDEDIT:
+class QWENVL_Omni:
     def __init__(self):
         self.tmp_dir = os.path.join(os.path.dirname(__file__), "tmp")
         if not os.path.exists(self.tmp_dir):
@@ -25,18 +25,15 @@ class SEEDEDIT:
         return {
             "required": {
                 "prompt": ("STRING",),
-                "url": ("STRING",),
+                "url": ("STRING",{"default": None}),
             },
         }
 
-    RETURN_TYPES = ("IMAGE",)
+    RETURN_TYPES = ("STRING",)
     FUNCTION = "test"
     CATEGORY = "RomanticQq"
-    def test(self, prompt, url):
+    def test(self, prompt, url=None):
         print("prompt: ", prompt)
-        print("url: ", url)
-        tmp_img_name = str(uuid.uuid4()) + ".jpg"
-        tmp_img_path = os.path.join(self.tmp_dir, tmp_img_name)
         # Send the image to the server
         for i in range(3):
             print(f"第{i+1}次请求")
@@ -46,33 +43,34 @@ class SEEDEDIT:
                     "clientId": "F6010A0A000005",
                     "token": "c1970c0208d7430ebddae7041afc90d9",
                     "type": 3,
-                    "model": 59,
-                    "imageUrl": url,
+                    "model": 63,
+                    "stream": 1,
                     "text": prompt
-                }   
+                }
+
+                if url is not None:
+                    data["imageUrl"] = url
+
                 json_data = json.dumps(data)
-                response = requests.post(self.url, headers=self.headers, data=json_data)
-                # 打印响应结果
+
+                response = requests.post(self.url, headers=self.headers, data=json_data, stream=True, timeout=5)
+
+                res_text = ''
                 if response.status_code == 200:
-                    print("请求成功:", response.text)
-                    data_dict = json.loads(response.text)
-                    img_url = data_dict['generated_text']
-                    img_response = requests.get(img_url)
-                    if img_response.status_code == 200:
-                        with open(tmp_img_path, 'wb') as f:
-                            f.write(img_response.content)
-                        print("图片下载成功")
-                        break
-                    else:
-                        print("图片下载失败:", img_response.status_code)
+                    for chunk in response.iter_content(chunk_size=1024):
+                        if chunk:
+                            a = chunk.decode('utf-8')
+                            str_arr = chunk.decode('utf-8').split("data:")[1:]
+                            text = "".join([json.loads(s)['generated_text'] for s in str_arr])
+                            res_text = res_text + text
+
+                    print("input: ", prompt)
+                    print("output: ", res_text)
+                    break
+                            
                 else:
-                    print("请求失败:", response.status_code, response.text)
+                    print(f"请求失败，状态码：{response.status_code}")
             except Exception as e:
                 print(e)
 
-        img = cv2.imread(tmp_img_path)
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        img = torch.from_numpy(np.expand_dims(img, axis=0) / 255.0)
-        os.remove(tmp_img_path)
-        # return (image,)
-        return (img,)
+        return (res_text,)
