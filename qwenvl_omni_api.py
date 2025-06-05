@@ -25,14 +25,14 @@ class QWENVL_Omni:
         return {
             "required": {
                 "prompt": ("STRING",),
-                "url": ("STRING",{"default": None}),
+                "imageUrl": ("STRING",{"default": None}),
             },
         }
 
     RETURN_TYPES = ("STRING",)
     FUNCTION = "test"
     CATEGORY = "RomanticQq"
-    def test(self, prompt, url=None):
+    def test(self, prompt, imageUrl=None):
         print("prompt: ", prompt)
         # Send the image to the server
         for i in range(3):
@@ -48,8 +48,8 @@ class QWENVL_Omni:
                     "text": prompt
                 }
 
-                if url is not None:
-                    data["imageUrl"] = url
+                if imageUrl is not None:
+                    data["imageUrl"] = imageUrl
 
                 json_data = json.dumps(data)
 

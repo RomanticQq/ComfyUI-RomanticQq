@@ -25,7 +25,7 @@ class Jimeng_Role:
         return {
             "required": {
                 "prompt": ("STRING",),
-                "url": ("STRING",),
+                "imageUrl": ("STRING",),
                 "ref_ip_weight": ("FLOAT", {"default": 0.7, "min": 0.0, "max": 1.0, "step": 0.01}),
                 "ref_id_weight": ("FLOAT", {"default": 0.36, "min": 0.0, "max": 1.0, "step": 0.01}),
             },
@@ -34,9 +34,10 @@ class Jimeng_Role:
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
     CATEGORY = "RomanticQq"
-    def test(self, prompt, url, ref_ip_weight, ref_id_weight):
+    def test(self, prompt, imageUrl, ref_ip_weight, ref_id_weight):
+        print("开始调用接口：即梦角色特征")
         print("prompt: ", prompt)
-        print("url: ", url)
+        print("imageUrl: ", imageUrl)
         tmp_img_name = str(uuid.uuid4()) + ".jpg"
         tmp_img_path = os.path.join(self.tmp_dir, tmp_img_name)
         # Send the image to the server
@@ -49,7 +50,7 @@ class Jimeng_Role:
                     "token": "c1970c0208d7430ebddae7041afc90d9",
                     "type": 3,
                     "model": 68,
-                    "imageUrl": url,
+                    "imageUrl": imageUrl,
                     "text": prompt,
                     "parameters": {
                         "ref_ip_weight": ref_ip_weight,

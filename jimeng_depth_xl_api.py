@@ -25,7 +25,7 @@ class Jimeng_Depth_Xl:
         return {
             "required": {
                 "prompt": ("STRING",),
-                "url": ("STRING",),
+                "imageUrl": ("STRING",),
                 "strength": ("FLOAT", {"default": 0.80, "min": 0.0, "max": 1.0, "step": 0.01}),
             },
         }
@@ -33,9 +33,10 @@ class Jimeng_Depth_Xl:
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
     CATEGORY = "RomanticQq"
-    def test(self, prompt, url, strength):
+    def test(self, prompt, imageUrl, strength):
+        print("开始调用接口：即梦景深XL")
         print("prompt: ", prompt)
-        print("url: ", url)
+        print("imageUrl: ", imageUrl)
         tmp_img_name = str(uuid.uuid4()) + ".jpg"
         tmp_img_path = os.path.join(self.tmp_dir, tmp_img_name)
         # Send the image to the server
@@ -48,7 +49,7 @@ class Jimeng_Depth_Xl:
                     "token": "c1970c0208d7430ebddae7041afc90d9",
                     "type": 3,
                     "model": 61,
-                    "imageUrl": url,
+                    "imageUrl": imageUrl,
                     "text": prompt,
                     "parameters": {
                             "controlnet_args": [

@@ -25,16 +25,17 @@ class SEEDEDIT:
         return {
             "required": {
                 "prompt": ("STRING",),
-                "url": ("STRING",),
+                "imageUrl": ("STRING",),
             },
         }
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
     CATEGORY = "RomanticQq"
-    def test(self, prompt, url):
+    def test(self, prompt, imageUrl):
+        print("开始调用接口：seededit")
         print("prompt: ", prompt)
-        print("url: ", url)
+        print("imageUrl: ", imageUrl)
         tmp_img_name = str(uuid.uuid4()) + ".jpg"
         tmp_img_path = os.path.join(self.tmp_dir, tmp_img_name)
         # Send the image to the server
@@ -47,7 +48,7 @@ class SEEDEDIT:
                     "token": "c1970c0208d7430ebddae7041afc90d9",
                     "type": 3,
                     "model": 59,
-                    "imageUrl": url,
+                    "imageUrl": imageUrl,
                     "text": prompt
                 }   
                 json_data = json.dumps(data)
