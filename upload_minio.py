@@ -15,9 +15,10 @@ class MINIO_UPLOAD:
         self.minio_dir = "upload"
         if not os.path.exists(self.tmp_dir):
             os.makedirs(self.tmp_dir)
-        endpoint = "106.12.196.32:19612"
-        access_key = "hIscot4c0zAiEWtyqh7P"   
-        secret_key = "0RktRD2DS9lrQaZDf0IlDpbibsS4nQ8Tr95DCLMm"
+        self.keys = json.load(open(os.path.join(os.path.dirname(__file__), "keys.json"), "r"))
+        endpoint = self.keys["minio"]["endpoint"]
+        access_key = self.keys["minio"]["access_key"]
+        secret_key = self.keys["minio"]["secret_key"]
         self.bucket_name = 'myminio'
         self.client = Minio(endpoint, access_key=access_key, secret_key=secret_key, secure=False)
         if not self.client.bucket_exists(self.bucket_name):
