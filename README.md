@@ -1,2 +1,19 @@
 # ComfuUI-RomanticQq
 自定义的comfyui插件
+
+## 安装goundingdino
+1. 将[groundingdino](https://github.com/IDEA-Research/GroundingDINO.git)项目克隆到ComfyUI-RomanticQq目录下
+2. 进入groundingdino目录后执行以下命令
+   ```shell
+   export CUDA_HOME=/usr/local/cuda
+   pip install -e .
+3. 在groundingdino目录下创建weights，将权重放在weights目录下，权重链接[groundingdino_swint_ogc.pth](https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth)
+
+## 安装sam2
+
+1. 将[Grounded-SAM-2](https://github.com/IDEA-Research/Grounded-SAM-2.git)项目克隆到ComfyUI-RomanticQq目录下
+2. 进入Grounded-SAM-2目录后执行以下命令
+   ```shell
+   export CUDA_HOME=/usr/local/cuda
+   pip install -e .
+3. 下载权重，将权重放在ComfyUI-RomanticQq目录下，权重链接[sam2.1_hiera_large.pt](https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_large.pt)
