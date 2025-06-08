@@ -15,10 +15,11 @@ class Jimeng_Depth_2_Pro:
         if not os.path.exists(self.tmp_dir):
             os.makedirs(self.tmp_dir)
         self.url = 'http://test-api.aiedevice.com/interact/vui/ai/v1'  # 替换为实际接口URL
+        self.keys = json.load(open(os.path.join(os.path.dirname(__file__), "keys.json"), "r"))
         self.headers = {
-            "RC-DEVICE-SESSION": "c1970c0208d7430ebddae7041afc90d9",
-            "ailab-web-session": "12312412",
-            "server-super-token": "e2fb7af59517ac82d640c60df5365e61"
+            "RC-DEVICE-SESSION": self.keys["RC-DEVICE-SESSION"],
+            "ailab-web-session": self.keys["ailab-web-session"],
+            "server-super-token": self.keys["server-super-token"]
         }
     @classmethod
     def INPUT_TYPES(s):
@@ -44,9 +45,9 @@ class Jimeng_Depth_2_Pro:
             print(f"第{i+1}次请求")
             try:
                 data = {
-                    "appId": "007cd3983760",
-                    "clientId": "F6010A0A000005",
-                    "token": "c1970c0208d7430ebddae7041afc90d9",
+                    "appId": self.keys["appId"],
+                    "clientId": self.keys["clientId"],
+                    "token": self.keys["token"],
                     "type": 3,
                     "model": 67,
                     "imageUrl": imageUrl,
