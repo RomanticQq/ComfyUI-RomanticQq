@@ -13,6 +13,8 @@ class GroundingDino:
     def __init__(self):
         self.dir_name = os.path.dirname(__file__)
         self.tmp_dir = os.path.join(os.path.dirname(__file__), "tmp")
+        if not os.path.exists(self.tmp_dir):
+            os.makedirs(self.tmp_dir)
         self.model = load_model(f"{self.dir_name}/GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py", f"{self.dir_name}/GroundingDINO/weights/groundingdino_swint_ogc.pth")
     @classmethod
     def INPUT_TYPES(s):
