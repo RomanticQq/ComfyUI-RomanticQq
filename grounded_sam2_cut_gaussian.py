@@ -23,6 +23,8 @@ class GroundedSam2CutGaussian:
     def __init__(self):
         self.dir_name = os.path.dirname(__file__)
         self.tmp_dir = os.path.join(os.path.dirname(__file__), "tmp")
+        if not os.path.exists(self.tmp_dir):
+            os.makedirs(self.tmp_dir)
         """
         1. 配置 Hyper parameters
         """
