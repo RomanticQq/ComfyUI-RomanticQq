@@ -17,4 +17,4 @@
    export CUDA_HOME=/usr/local/cuda
    pip install -e .
 3. 下载sam权重，将权重放在ComfyUI-RomanticQq/Grounded-SAM-2/checkpoints/目录下，权重链接[sam2.1_hiera_large.pt](https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_large.pt)
-4. 下载groundingdino权重，将权重放在ComfyUI-RomanticQq//Grounded-SAM-2/gdino_checkpoints/目录下，权重链接[groundingdino_swint_ogc.pth](https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth)
+4. 下载groundingdino权重，将权重放在ComfyUI-RomanticQq/Grounded-SAM-2/gdino_checkpoints/目录下，权重链接[groundingdino_swint_ogc.pth](https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth)
