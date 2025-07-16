@@ -8,6 +8,7 @@ from .jimeng_role_api import Jimeng_Role
 from .groundingdino_cut import GroundingDino
 from .grounded_sam2_cut_gaussian import GroundedSam2CutGaussian
 from .omniconsistency_nodes import Comfyui_OmniConsistency
+from .fluxgym_caption import FluxGymCaption
 
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
@@ -22,6 +23,7 @@ NODE_CLASS_MAPPINGS = {
     "groundingdino": GroundingDino,
     "grounded_sam2_cut_gaussian": GroundedSam2CutGaussian,
     "Comfyui_OmniConsistency_fq": Comfyui_OmniConsistency,
+    "fluxgym_caption": FluxGymCaption,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
@@ -36,4 +38,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "groundingdino": "GroundingDino",
     "grounded_sam2_cut_gaussian": "GroundedSam2CutGaussian",
     "Comfyui_OmniConsistency_fq": "OmniConsistency-Generator-fq",
+    "fluxgym_caption": "fluxgym_caption"
 }
