@@ -44,8 +44,8 @@ class AddTwoImage:
         cv2.imwrite(small_tmp_img_path, small_img)
         if padding_size is not None:
             width, height = Image.open(small_tmp_img_path).size
-            width = width + 300
-            height = height + 300
+            width = width + padding_size
+            height = height + padding_size
         large_tmp_img_name = str(uuid.uuid4()) + ".jpg"
         large_tmp_img_path = os.path.join(self.tmp_dir, large_tmp_img_name)
         if large_image is not None:
