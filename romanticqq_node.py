@@ -11,6 +11,7 @@ from .omniconsistency_nodes import Comfyui_OmniConsistency
 from .fluxgym_caption import FluxGymCaption
 from .add_two_image import AddTwoImage
 from .add_text import AddText
+from .word_title import WordTitle
 
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
@@ -28,6 +29,7 @@ NODE_CLASS_MAPPINGS = {
     "fluxgym_caption": FluxGymCaption,
     "add_two_image": AddTwoImage,
     "add_text": AddText,
+    "word_title": WordTitle,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
@@ -45,4 +47,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "fluxgym_caption": "fluxgym_caption",
     "add_two_image": "add_two_image",
     "add_text": "add_text",
+    "word_title": "word_title",
 }

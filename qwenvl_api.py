@@ -46,7 +46,7 @@ class QWENVL:
                     "type": 3,
                     "model": 26,
                     "stream": 1,
-                    "text": prompt
+                    "text": prompt,
                 }
 
                 if imageUrl is not None:
