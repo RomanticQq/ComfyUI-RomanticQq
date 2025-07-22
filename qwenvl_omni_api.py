@@ -58,9 +58,8 @@ class QWENVL_Omni:
 
                 res_text = ''
                 if response.status_code == 200:
-                    for chunk in response.iter_content(chunk_size=1024):
+                    for chunk in response.iter_lines():
                         if chunk:
-                            a = chunk.decode('utf-8')
                             str_arr = chunk.decode('utf-8').split("data:")[1:]
                             text = "".join([json.loads(s)['generated_text'] for s in str_arr])
                             res_text = res_text + text
