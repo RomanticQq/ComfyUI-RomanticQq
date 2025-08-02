@@ -9,7 +9,7 @@ import requests
 from minio import Minio
 from datetime import datetime, timedelta
 
-class QWENVL:
+class SplitFilterConcat:
     def __init__(self):
         pass
 
