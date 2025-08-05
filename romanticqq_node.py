@@ -14,6 +14,7 @@ from .add_text import AddText
 from .word_title import WordTitle
 from .split_filter_concat import SplitFilterConcat
 from .str_lower import StrLower
+from .lora_path import LoraPath
 
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
@@ -34,6 +35,7 @@ NODE_CLASS_MAPPINGS = {
     "word_title": WordTitle,
     "split_filter_concat": SplitFilterConcat,
     "str_lower": StrLower,
+    "lora_path": LoraPath,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
@@ -54,4 +56,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "word_title": "word_title",
     "split_filter_concat": "split_filter_concat",
     "str_lower": "str_lower",
+    "lora_path": "lora_path",
 }
