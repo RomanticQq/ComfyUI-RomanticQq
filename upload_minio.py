@@ -46,6 +46,6 @@ class MINIO_UPLOAD:
         # Upload the image to MinIO
         with open(tmp_img_path, 'rb') as f:
             self.client.put_object(self.bucket_name, minio_img_path, f, os.path.getsize(tmp_img_path), content_type='image/jpeg')
-        minio_url = self.client.get_presigned_url("GET", self.bucket_name, minio_img_path, expires=timedelta(days=1))
+        minio_url = self.client.get_presigned_url("GET", self.bucket_name, minio_img_path, expires=timedelta(days=1)).split("?")[0]
         os.remove(tmp_img_path)
         return (minio_url,)
