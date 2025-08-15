@@ -79,7 +79,7 @@ class AddTwoImage:
         y_offset = (large_height - small_height) // 2
 
         # 为小图创建圆角边框
-        radius = 40  # 圆角半径
+        # radius = 40  # 圆角半径
         small_img = small_img.convert("RGBA")
         mask = Image.new("L", (small_width, small_height), 0)
         draw = ImageDraw.Draw(mask)
