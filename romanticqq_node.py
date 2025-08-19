@@ -16,6 +16,10 @@ from .split_filter_concat import SplitFilterConcat
 from .str_lower import StrLower
 from .lora_path import LoraPath
 from .add_vertical_text import ADD_VERTICAL_TEXT
+from .get_width_height_region import GetWidthHeightRegion
+from .color_to_color import ColorToColor
+from .color_to_image import ColorToImage
+from .color_list_to_image import ColorListToImage
 
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
@@ -38,6 +42,10 @@ NODE_CLASS_MAPPINGS = {
     "str_lower": StrLower,
     "lora_path": LoraPath,
     "add_vertical_text": ADD_VERTICAL_TEXT,
+    "get_width_height_region": GetWidthHeightRegion,
+    "color_to_color": ColorToColor,
+    "color_to_image": ColorToImage,
+    "color_list_to_image": ColorListToImage,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
@@ -60,4 +68,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "str_lower": "str_lower",
     "lora_path": "lora_path",
     "add_vertical_text": "add_vertical_text",
+    "get_width_height_region": "get_width_height_region",
+    "color_to_color": "color_to_color",
+    "color_to_image": "color_to_image",
+    "color_list_to_image": "color_list_to_image",
 }
