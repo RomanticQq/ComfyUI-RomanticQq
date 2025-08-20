@@ -111,16 +111,17 @@ class ColorToColor:
                 "color_palettes": ("LIST",),
                 "mcolors_name": (['CSS4_COLORS', 'XKCD_COLORS', 'TABLEAU_COLORS'],),
                 "compare_method": (['delta_e', 'hsv', 'rgb'],),
-                "topk": ("INT", {"default": 1, "min": 0, "max": 1000, "step": 1}),
+                "topk": ("INT", {"default": 1, "min": 1, "max": 1000, "step": 1}),
+                "index": ("INT", {"default": 0, "min": 0, "max": 1000, "step": 1}),
             },
         }
 
-    RETURN_TYPES = ("LIST", "LIST", "LIST", "STRING")
-    RETURN_NAMES = ("color_list", "color_name_list", "color_distance", "color_name_str")
+    RETURN_TYPES = ("LIST", "LIST", "LIST", "STRING", "STRING")
+    RETURN_NAMES = ("color_list", "color_name_list", "color_distance", "color_name_str", "color_name_str_index")
     FUNCTION = "test"
     CATEGORY = "RomanticQq/COLOR"
     DESCRIPTION = "将颜色转换为已知颜色集中的最接近颜色, 支持CSS4、XKCD和Tableau颜色集，支持多种比较方法"
-    def test(self, color_palettes, mcolors_name, compare_method, topk):
+    def test(self, color_palettes, mcolors_name, compare_method, topk=None, index=None):
         color_palettes = color_palettes[0].split('\n')
         if mcolors_name == "CSS4_COLORS":
             colors_kv = mcolors.CSS4_COLORS
@@ -154,7 +155,13 @@ class ColorToColor:
                 print(f"使用 {compare_method} 方法最接近 {color} 颜色是 {colors_vk[closest]}, 十六进制是 {closest}, 距离 {distance:.4f}")
             color_list.append(closest)
             distance_list.append(distance)
-        if topk > 0:
+        if index is not None and index < len(color_list):
+            if index > len(color_name_list) - 1:
+                index = len(color_name_list) - 1
+            color_name_str_index = color_name_list[index]
+        else:
+            color_name_str_index = ''
+        if topk is not None and topk > 0:
             if topk > len(color_list):
                 topk = len(color_list)
             # 截断到 topk
@@ -162,4 +169,5 @@ class ColorToColor:
             color_name_list = color_name_list[:topk]
             distance_list = distance_list[:topk]
         color_name_str = ', '.join(color_name_list)
-        return (color_list, color_name_list, distance_list, color_name_str)
+
+        return (color_list, color_name_list, distance_list, color_name_str, color_name_str_index)
