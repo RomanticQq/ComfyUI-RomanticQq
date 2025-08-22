@@ -15,7 +15,7 @@ class QWENVL:
         if not os.path.exists(self.tmp_dir):
             os.makedirs(self.tmp_dir)
         self.url = 'http://test-api.aiedevice.com/interact/vui/ai/v1'  # 替换为实际接口URL
-        self.keys = json.load(open(os.path.join(os.path.dirname(__file__), "keys.json"), "r"))
+        self.keys = json.load(open(os.path.join(os.path.dirname(__file__).split('/api/')[0], "keys.json"), "r"))
         self.headers = {
             "RC-DEVICE-SESSION": self.keys["api"]["RC-DEVICE-SESSION"],
             "ailab-web-session": self.keys["api"]["ailab-web-session"],

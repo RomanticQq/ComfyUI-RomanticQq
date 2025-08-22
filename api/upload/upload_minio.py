@@ -15,7 +15,7 @@ class MINIO_UPLOAD:
         self.minio_dir = "upload"
         if not os.path.exists(self.tmp_dir):
             os.makedirs(self.tmp_dir)
-        self.keys = json.load(open(os.path.join(os.path.dirname(__file__), "keys.json"), "r"))
+        self.keys = json.load(open(os.path.join(os.path.dirname(__file__).split('/api/')[0], "keys.json"), "r"))
         endpoint = self.keys["minio"]["endpoint"]
         access_key = self.keys["minio"]["access_key"]
         secret_key = self.keys["minio"]["secret_key"]
