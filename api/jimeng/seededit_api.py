@@ -9,7 +9,7 @@ import requests
 from minio import Minio
 from datetime import datetime, timedelta
 
-class Jimeng_Depth_2_Pro:
+class SEEDEDIT:
     def __init__(self):
         self.tmp_dir = os.path.join(os.path.dirname(__file__), "tmp")
         if not os.path.exists(self.tmp_dir):
@@ -27,15 +27,14 @@ class Jimeng_Depth_2_Pro:
             "required": {
                 "prompt": ("STRING",),
                 "imageUrl": ("STRING",),
-                "strength": ("FLOAT", {"default": 0.80, "min": 0.0, "max": 1.0, "step": 0.01}),
             },
         }
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
-    CATEGORY = "RomanticQq"
-    def test(self, prompt, imageUrl, strength):
-        print("开始调用接口：即梦景深2.0Pro")
+    CATEGORY = "RomanticQq/api/jimeng"
+    def test(self, prompt, imageUrl):
+        print("开始调用接口：seededit")
         print("prompt: ", prompt)
         print("imageUrl: ", imageUrl)
         tmp_img_name = str(uuid.uuid4()) + ".jpg"
@@ -49,18 +48,9 @@ class Jimeng_Depth_2_Pro:
                     "clientId": self.keys["api"]["clientId"],
                     "token": self.keys["api"]["token"],
                     "type": 3,
-                    "model": 67,
+                    "model": 59,
                     "imageUrl": imageUrl,
-                    "text": prompt,
-                    "parameters": {
-                            "controlnet_args": [
-                                {
-                                    "type": "depth",
-                                    "strength": strength,
-                                    "binary_data_index": 0
-                                }
-                            ]
-                        }
+                    "text": prompt
                 }   
                 json_data = json.dumps(data)
                 response = requests.post(self.url, headers=self.headers, data=json_data)

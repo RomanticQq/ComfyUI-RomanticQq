@@ -35,14 +35,9 @@ class PaddingImage:
         img = (img * 255).astype(np.uint8)
         img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
         cv2.imwrite(tmp_img_path, img)
-
-
-
         image = Image.open(tmp_img_path).convert("RGB")
         original_width, original_height = image.size
         print(f"原图尺寸: {original_width}×{original_height}") 
-        # 计算需要填充的尺寸
-        size = 1024
         
         # 计算左右和上下的填充量
         pad_width = max(0, size - original_width)

@@ -1,5 +1,5 @@
 # ComfuUI-RomanticQq
-自定义的comfyui插件
+自定义的comfyui插件，该项目是为了方便日常工作，非API结点可以任意使用。
 
 ## fluxgym_caption
 1. 在使用该节点时需要能够访问网络能够访问huggingface，或者使用镜像网站；

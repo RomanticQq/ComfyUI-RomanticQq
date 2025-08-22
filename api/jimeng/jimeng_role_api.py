@@ -9,7 +9,7 @@ import requests
 from minio import Minio
 from datetime import datetime, timedelta
 
-class SEEDEDIT:
+class Jimeng_Role:
     def __init__(self):
         self.tmp_dir = os.path.join(os.path.dirname(__file__), "tmp")
         if not os.path.exists(self.tmp_dir):
@@ -27,14 +27,16 @@ class SEEDEDIT:
             "required": {
                 "prompt": ("STRING",),
                 "imageUrl": ("STRING",),
+                "ref_ip_weight": ("FLOAT", {"default": 0.7, "min": 0.0, "max": 1.0, "step": 0.01}),
+                "ref_id_weight": ("FLOAT", {"default": 0.36, "min": 0.0, "max": 1.0, "step": 0.01}),
             },
         }
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
-    CATEGORY = "RomanticQq"
-    def test(self, prompt, imageUrl):
-        print("开始调用接口：seededit")
+    CATEGORY = "RomanticQq/api/jimeng"
+    def test(self, prompt, imageUrl, ref_ip_weight, ref_id_weight):
+        print("开始调用接口：即梦角色特征")
         print("prompt: ", prompt)
         print("imageUrl: ", imageUrl)
         tmp_img_name = str(uuid.uuid4()) + ".jpg"
@@ -48,9 +50,13 @@ class SEEDEDIT:
                     "clientId": self.keys["api"]["clientId"],
                     "token": self.keys["api"]["token"],
                     "type": 3,
-                    "model": 59,
+                    "model": 68,
                     "imageUrl": imageUrl,
-                    "text": prompt
+                    "text": prompt,
+                    "parameters": {
+                        "ref_ip_weight": ref_ip_weight,
+                        "ref_id_weight": ref_id_weight
+                    }
                 }   
                 json_data = json.dumps(data)
                 response = requests.post(self.url, headers=self.headers, data=json_data)

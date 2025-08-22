@@ -31,6 +31,7 @@ class ADD_VERTICAL_TEXT:
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
     CATEGORY = "RomanticQq"
+    DESCRIPTION = "Add vertical text to an image at specified coordinates."
     def test(self, image, text, font, font_color, font_size, x, y, position):
         if len(text) == 0:
             return (image,)

@@ -33,7 +33,7 @@ class Jimeng_Depth_Xl:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
-    CATEGORY = "RomanticQq"
+    CATEGORY = "RomanticQq/api/jimeng"
     def test(self, prompt, imageUrl, strength):
         print("开始调用接口：即梦景深XL")
         print("prompt: ", prompt)

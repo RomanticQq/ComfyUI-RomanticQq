@@ -9,7 +9,7 @@ import requests
 from minio import Minio
 from datetime import datetime, timedelta
 
-class QWENVL_Omni:
+class QWENVL:
     def __init__(self):
         self.tmp_dir = os.path.join(os.path.dirname(__file__), "tmp")
         if not os.path.exists(self.tmp_dir):
@@ -32,7 +32,7 @@ class QWENVL_Omni:
 
     RETURN_TYPES = ("STRING",)
     FUNCTION = "test"
-    CATEGORY = "RomanticQq"
+    CATEGORY = "RomanticQq/api/vlm"
     def test(self, prompt, imageUrl=None):
         print("prompt: ", prompt)
         # Send the image to the server
@@ -44,9 +44,9 @@ class QWENVL_Omni:
                     "clientId": self.keys["api"]["clientId"],
                     "token": self.keys["api"]["token"],
                     "type": 3,
-                    "model": 63,
+                    "model": 26,
                     "stream": 1,
-                    "text": prompt
+                    "text": prompt,
                 }
 
                 if imageUrl is not None:

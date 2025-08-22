@@ -1,12 +1,11 @@
-from .seededit_api import SEEDEDIT
+from .api.jimeng.seededit_api import SEEDEDIT
 from .upload_minio import MINIO_UPLOAD
-from .qwenvl_omni_api import QWENVL_Omni
-from .qwenvl_api import QWENVL
-from .jimeng_depth_2_pro_api import Jimeng_Depth_2_Pro
-from .jimeng_depth_xl_api import Jimeng_Depth_Xl
-from .jimeng_role_api import Jimeng_Role
-from .omniconsistency_nodes import Comfyui_OmniConsistency
-from .fluxgym_caption import FluxGymCaption
+from .api.vlm.qwenvl_omni_api import QWENVL_Omni
+from .api.vlm.qwenvl_api import QWENVL
+from .api.jimeng.jimeng_depth_2_pro_api import Jimeng_Depth_2_Pro
+from .api.jimeng.jimeng_depth_xl_api import Jimeng_Depth_Xl
+from .api.jimeng.jimeng_role_api import Jimeng_Role
+from .prompt.fluxgym_caption import FluxGymCaption
 from .add_two_image import AddTwoImage
 from .add_text import AddText
 from .word_title import WordTitle
@@ -15,9 +14,9 @@ from .str_lower import StrLower
 from .lora_path import LoraPath
 from .add_vertical_text import ADD_VERTICAL_TEXT
 from .get_width_height_region import GetWidthHeightRegion
-from .color_to_color import ColorToColor
-from .color_to_image import ColorToImage
-from .color_list_to_image import ColorListToImage
+from .color.color_to_color import ColorToColor
+from .color.color_to_image import ColorToImage
+from .color.color_list_to_image import ColorListToImage
 from .padding_image import PaddingImage
 
 # A dictionary that contains all nodes you want to export with their names
@@ -30,7 +29,6 @@ NODE_CLASS_MAPPINGS = {
     "jimeng_role_api": Jimeng_Role,
     "jimeng_depth_xl_api": Jimeng_Depth_Xl,
     "jimeng_depth_2_pro_api": Jimeng_Depth_2_Pro,
-    "Comfyui_OmniConsistency_fq": Comfyui_OmniConsistency,
     "fluxgym_caption": FluxGymCaption,
     "add_two_image": AddTwoImage,
     "add_text": AddText,
@@ -55,7 +53,6 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "jimeng_role_api": "jimeng_role_api",
     "jimeng_depth_xl_api": "jimeng_depth_xl_api",
     "jimeng_depth_2_pro_api": "jimeng_depth_2_pro_api",
-    "Comfyui_OmniConsistency_fq": "OmniConsistency-Generator-fq",
     "fluxgym_caption": "fluxgym_caption",
     "add_two_image": "add_two_image",
     "add_text": "add_text",
