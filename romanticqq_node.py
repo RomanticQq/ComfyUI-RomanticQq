@@ -5,8 +5,6 @@ from .qwenvl_api import QWENVL
 from .jimeng_depth_2_pro_api import Jimeng_Depth_2_Pro
 from .jimeng_depth_xl_api import Jimeng_Depth_Xl
 from .jimeng_role_api import Jimeng_Role
-from .groundingdino_cut import GroundingDino
-from .grounded_sam2_cut_gaussian import GroundedSam2CutGaussian
 from .omniconsistency_nodes import Comfyui_OmniConsistency
 from .fluxgym_caption import FluxGymCaption
 from .add_two_image import AddTwoImage
@@ -32,8 +30,6 @@ NODE_CLASS_MAPPINGS = {
     "jimeng_role_api": Jimeng_Role,
     "jimeng_depth_xl_api": Jimeng_Depth_Xl,
     "jimeng_depth_2_pro_api": Jimeng_Depth_2_Pro,
-    "groundingdino": GroundingDino,
-    "grounded_sam2_cut_gaussian": GroundedSam2CutGaussian,
     "Comfyui_OmniConsistency_fq": Comfyui_OmniConsistency,
     "fluxgym_caption": FluxGymCaption,
     "add_two_image": AddTwoImage,
@@ -59,8 +55,6 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "jimeng_role_api": "jimeng_role_api",
     "jimeng_depth_xl_api": "jimeng_depth_xl_api",
     "jimeng_depth_2_pro_api": "jimeng_depth_2_pro_api",
-    "groundingdino": "GroundingDino",
-    "grounded_sam2_cut_gaussian": "GroundedSam2CutGaussian",
     "Comfyui_OmniConsistency_fq": "OmniConsistency-Generator-fq",
     "fluxgym_caption": "fluxgym_caption",
     "add_two_image": "add_two_image",
