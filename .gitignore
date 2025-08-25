@@ -1,7 +1,0 @@
-keys.json
-tmp/*
-__pycache__/*
-*/__pycache__/*
-*/*/__pycache__/*
-*/tmp/*
-*/*/tmp/*
