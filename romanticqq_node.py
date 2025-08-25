@@ -1,5 +1,5 @@
 from .api.jimeng.seededit_api import SEEDEDIT
-from .upload_minio import MINIO_UPLOAD
+from .api.upload.upload_minio import MINIO_UPLOAD
 from .api.vlm.qwenvl_omni_api import QWENVL_Omni
 from .api.vlm.qwenvl_api import QWENVL
 from .api.jimeng.jimeng_depth_2_pro_api import Jimeng_Depth_2_Pro

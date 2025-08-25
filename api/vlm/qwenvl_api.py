@@ -34,6 +34,7 @@ class QWENVL:
     FUNCTION = "test"
     CATEGORY = "RomanticQq/api/vlm"
     def test(self, prompt, imageUrl=None):
+        print(os.getcwd())
         print("prompt: ", prompt)
         # Send the image to the server
         for i in range(3):
