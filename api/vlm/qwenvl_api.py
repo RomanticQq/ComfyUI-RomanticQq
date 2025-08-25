@@ -11,8 +11,6 @@ from datetime import datetime, timedelta
 
 class QWENVL:
     def __init__(self):
-
-
         self.tmp_dir = os.path.join(os.path.dirname(__file__), "tmp")
         if not os.path.exists(self.tmp_dir):
             os.makedirs(self.tmp_dir)
