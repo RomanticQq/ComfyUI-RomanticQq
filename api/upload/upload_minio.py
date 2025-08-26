@@ -34,7 +34,7 @@ class MINIO_UPLOAD:
     RETURN_TYPES = ("STRING",)
     RETURN_TYPES_NAMES = ("minio_url",)
     FUNCTION = "test"
-    CATEGORY = "RomanticQq/upload"
+    CATEGORY = "RomanticQq/api/upload"
     def test(self, image):
         tmp_img_name = str(uuid.uuid4()) + ".jpg"
         tmp_img_path = os.path.join(self.tmp_dir, tmp_img_name)
