@@ -35,7 +35,7 @@ class GetWidthHeightRegion:
         img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
         cv2.imwrite(tmp_img_path, img)
         img = Image.open(tmp_img_path).convert("RGB")
-        box = (left, top, width, height)
+        box = (left, top, left + width, top + height)
         region = img.crop(box)
         region.save(tmp_img_path)
         img = cv2.imread(tmp_img_path)
