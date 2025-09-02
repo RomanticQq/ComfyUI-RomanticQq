@@ -1,16 +1,6 @@
-CATEGORY_NAME = "RomanticQq/text"
+import translators  
 
-def  translators_fun(text : str , translator: str = "bing", source_language = "auto", target_language = "en", timeout: float = 10.0):
-    if not text:
-        return ""
-    try:
-        import translators  
-        result = translators.translate_text(query_text = text, translator = translator,from_language = source_language, to_language= target_language, timeout= timeout)
-        return result 
-    except Exception as e:
-        raise Exception(f"Error:  Translation failed , Message : {e}")
     
-
 
 class Text_Translation:
     def __init__(self):
@@ -31,21 +21,17 @@ class Text_Translation:
 
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("string",)
+    FUNCTION = "test"
+    CATEGORY = "RomanticQq/text"
 
-    FUNCTION = "func"
-
-    #OUTPUT_NODE = False
-
-    CATEGORY = CATEGORY_NAME
-
-    def func(self, trans_switch, trans_text, translator, source_language, target_language):
+    def test(self, trans_switch, trans_text, translator, source_language, target_language):
         output_text = ""
         if trans_switch:
             translator = translator.lower()
             if(source_language != "auto"):
                source_language = source_language.split("(")[1].split(")")[0]
             target_language = target_language.split("(")[1].split(")")[0]
-            output_text = translators_fun(text = trans_text, translator = translator, source_language = source_language, target_language = target_language)
+            output_text = translators.translate_text(query_text = trans_text, translator = translator,from_language = source_language, to_language= target_language, timeout= 10.0)
         else:
             output_text = trans_text
         return (output_text,)
