@@ -49,3 +49,13 @@ class Text_Translation:
         else:
             output_text = trans_text
         return (output_text,)
+
+
+
+
+#### 核心代码 ####
+
+# import translators
+# result = translators.translate_text(query_text =  "你好，世界！", translator = "alibaba",from_language = "zh", to_language= "en")
+# print(result)
+
