@@ -7,7 +7,7 @@ import numpy as np
 import os
 from PIL import Image, ImageDraw, ImageFont
 
-class  RANDOM_TEXT:
+class  RANDOM_TEXT_V2:
     def __init__(self):
         pass
 
@@ -15,7 +15,7 @@ class  RANDOM_TEXT:
     def INPUT_TYPES(s):
         return {
             "required": {
-                "input": ("LIST", {"default": None}),
+                "input": ("STRING", {"default": None}),
                 "random_seed": ("INT", {"default": 0, "min": 0, "max": 2**32 - 1, "step": 1, "control_after_generate": True}),
             },
         }
@@ -25,6 +25,7 @@ class  RANDOM_TEXT:
     CATEGORY = "RomanticQq/text"
     def test(self, input, random_seed):
         np.random.seed(random_seed)
+        input = input.split("\n")
         texts = [t for t in input if t is not None and len(t) > 0]
         if len(texts) == 0:
             return ("",)
