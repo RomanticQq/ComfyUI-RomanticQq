@@ -18,6 +18,7 @@ from .color.color_to_color import ColorToColor
 from .color.color_to_image import ColorToImage
 from .color.color_list_to_image import ColorListToImage
 from .padding_image import PaddingImage
+from .text.random_text import RANDOM_TEXT
 
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
@@ -42,6 +43,7 @@ NODE_CLASS_MAPPINGS = {
     "color_to_image": ColorToImage,
     "color_list_to_image": ColorListToImage,
     "padding_image": PaddingImage,
+    "random_text": RANDOM_TEXT,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
@@ -66,4 +68,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "color_to_image": "color_to_image",
     "color_list_to_image": "color_list_to_image",
     "padding_image": "padding_image",
+    "random_text": "random_text",
 }
