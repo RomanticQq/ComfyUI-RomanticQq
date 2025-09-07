@@ -22,6 +22,7 @@ from .text.random_text import RANDOM_TEXT
 from .text.text_translate import Text_Translation
 from .text.random_text_v2 import RANDOM_TEXT_V2
 from .api.custom_api import CustomAPI
+from .api.aigc.wordcard_api import WORDCARD
 
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
@@ -50,6 +51,7 @@ NODE_CLASS_MAPPINGS = {
     "text_translation": Text_Translation,
     "random_text_v2": RANDOM_TEXT_V2,
     "custom_api": CustomAPI,
+    "wordcard_api": WORDCARD,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
@@ -78,4 +80,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "text_translation": "text_translation",
     "random_text_v2": "random_text_v2",
     "custom_api": "custom_api",
+    "wordcard_api": "wordcard_api",
 }
