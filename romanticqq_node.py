@@ -24,7 +24,8 @@ from .text.random_text_v2 import RANDOM_TEXT_V2
 from .api.custom_api import CustomAPI
 from .api.aigc.wordcard_api import WORDCARD
 from .api.jimeng.jimeng_t2i_3 import JIMENG_T2I_3
-
+from .text.text_json import TEXT_JSON
+from .text.text_kv_get_value import TEXT_KV_GET_VALUE
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
 NODE_CLASS_MAPPINGS = {
@@ -54,6 +55,8 @@ NODE_CLASS_MAPPINGS = {
     "custom_api": CustomAPI,
     "wordcard_api": WORDCARD,
     "jimeng_t2i_3": JIMENG_T2I_3,
+    "text_json": TEXT_JSON,
+    "text_kv_get_value": TEXT_KV_GET_VALUE,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
@@ -84,4 +87,6 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "custom_api": "custom_api",
     "wordcard_api": "wordcard_api",
     "jimeng_t2i_3": "jimeng_t2i_3",
+    "text_json": "text_json",
+    "text_kv_get_value": "text_kv_get_value",
 }
