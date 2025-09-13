@@ -26,6 +26,8 @@ class JIMENG_T2I_3:
         return {
             "required": {
                 "prompt": ("STRING",),
+                "width": ("INT", {"default": 1024, "min": 0, "max": 2048, "step": 1}),
+                "height": ("INT", {"default": 1536, "min": 0, "max": 2048, "step": 1}),
                 "random_seed": ("INT", {"default": 0, "min": 0, "max": 2**32 - 1, "step": 1, "control_after_generate": True}),
             },
         }
