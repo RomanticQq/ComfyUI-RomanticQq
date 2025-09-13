@@ -35,7 +35,7 @@ class JIMENG_T2I_3:
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
     CATEGORY = "RomanticQq/api/jimeng"
-    def test(self, prompt, random_seed):
+    def test(self, prompt, width, height, random_seed):
         np.random.seed(random_seed)
         print("开始调用接口：jimeng_t2i_3")
         print("prompt: ", prompt)
@@ -53,8 +53,8 @@ class JIMENG_T2I_3:
                     "model": 60,
                     "text": prompt,
                     "parameters": {
-                        "width": 1024,
-                        "height": 1536
+                        "width": width,
+                        "height": height
                     },
                 }   
                 json_data = json.dumps(data)
