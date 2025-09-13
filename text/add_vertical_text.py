@@ -43,7 +43,7 @@ class ADD_VERTICAL_TEXT:
         cv2.imwrite(tmp_img_path, img)
         image = Image.open(tmp_img_path).convert("RGB")
         draw = ImageDraw.Draw(image)
-        font = ImageFont.truetype(os.path.join(os.path.join(os.path.dirname(os.path.abspath(__file__)),"font"), font), font_size)
+        font = ImageFont.truetype(os.path.join(os.path.join(os.path.dirname(os.path.abspath(__file__)).split('/text/')[0],"font"), font), font_size)
         
         if len(text) > 0:
             char = text[0]
