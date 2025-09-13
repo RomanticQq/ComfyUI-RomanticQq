@@ -25,7 +25,7 @@ class GetWidthHeightRegion:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
-    CATEGORY = "RomanticQq"
+    CATEGORY = "RomanticQq/image"
     DESCRIPTION = "Get a region of the image based on specified coordinates and dimensions."
     def test(self, image, left, top, width, height):
         tmp_img_name = str(uuid.uuid4()) + ".jpg"

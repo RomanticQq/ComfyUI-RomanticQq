@@ -27,7 +27,7 @@ class PaddingImage:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
-    CATEGORY = "RomanticQq"
+    CATEGORY = "RomanticQq/image"
     def test(self, image, size, color):
         tmp_img_name = str(uuid.uuid4()) + ".jpg"
         tmp_img_path = os.path.join(self.tmp_dir, tmp_img_name)

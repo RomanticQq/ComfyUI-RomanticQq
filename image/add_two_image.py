@@ -34,7 +34,7 @@ class AddTwoImage:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
-    CATEGORY = "RomanticQq"
+    CATEGORY = "RomanticQq/image"
     def test(self, small_image, radius, large_image=None, random_background=False, background_rgb="255,255,255", padding_size=None, width=None, height=None):
         small_tmp_img_name = str(uuid.uuid4()) + ".jpg"
         small_tmp_img_path = os.path.join(self.tmp_dir, small_tmp_img_name)

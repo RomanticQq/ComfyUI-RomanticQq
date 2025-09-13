@@ -49,7 +49,11 @@ class JIMENG_T2I_3:
                     "token": self.keys["api"]["token"],
                     "type": 3,
                     "model": 60,
-                    "text": prompt
+                    "text": prompt,
+                    "parameters": {
+                        "width": 1024,
+                        "height": 1536
+                    },
                 }   
                 json_data = json.dumps(data)
                 response = requests.post(self.url, headers=self.headers, data=json_data)

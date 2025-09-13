@@ -9,20 +9,20 @@ import requests
 from minio import Minio
 from datetime import datetime, timedelta
 
-class WordTitle:
+class StrLower:
     def __init__(self):
         pass
     @classmethod
     def INPUT_TYPES(s):
         return {
             "required": {
-                "word": ("STRING",),
+                "str": ("STRING",),
             },
         }
 
     RETURN_TYPES = ("STRING",)
     FUNCTION = "test"
-    CATEGORY = "RomanticQq"
-    def test(self, word):
-        word_title = word.title()
-        return (word_title,)
+    CATEGORY = "RomanticQq/text"
+    def test(self, str):
+        str_lower = str.lower()
+        return (str_lower,)

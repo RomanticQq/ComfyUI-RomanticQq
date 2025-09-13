@@ -34,7 +34,7 @@ class AddText:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
-    CATEGORY = "RomanticQq"
+    CATEGORY = "RomanticQq/text"
     def test(self, image, word, english_sentence, chinese_sentence, font_color, resize, width, height, word_font_size=50, english_sentence_font_size=30, chinese_sentence_font_size=30, top=30, bottom=50, gap_english_chinese_sentence=20):
         tmp_img_name = str(uuid.uuid4()) + ".jpg"
         tmp_img_path = os.path.join(self.tmp_dir, tmp_img_name)

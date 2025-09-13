@@ -26,7 +26,7 @@ class SplitFilterConcat:
 
     RETURN_TYPES = ("STRING",)
     FUNCTION = "test"
-    CATEGORY = "RomanticQq"
+    CATEGORY = "RomanticQq/text"
     def test(self, text, split=None, filter=None, concat=None):
         print("text: ", text)
         text = text.strip()
