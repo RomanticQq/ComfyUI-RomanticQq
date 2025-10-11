@@ -29,13 +29,15 @@ class Jimeng_Role:
                 "imageUrl": ("STRING",),
                 "ref_ip_weight": ("FLOAT", {"default": 0.7, "min": 0.0, "max": 1.0, "step": 0.01}),
                 "ref_id_weight": ("FLOAT", {"default": 0.36, "min": 0.0, "max": 1.0, "step": 0.01}),
+                "random_seed": ("INT", {"default": 0, "min": 0, "max": 2**32 - 1, "step": 1, "control_after_generate": True}),
             },
         }
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
     CATEGORY = "RomanticQq/api/jimeng"
-    def test(self, prompt, imageUrl, ref_ip_weight, ref_id_weight):
+    def test(self, prompt, imageUrl, ref_ip_weight, ref_id_weight, random_seed=0):
+        np.random.seed(random_seed)
         print("开始调用接口：即梦角色特征")
         print("prompt: ", prompt)
         print("imageUrl: ", imageUrl)
