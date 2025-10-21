@@ -13,7 +13,7 @@ class ADD_VERTICAL_TEXT:
             os.makedirs(self.tmp_dir)
     @classmethod
     def INPUT_TYPES(s):
-        font_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)),"font")
+        font_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)),"font").replace('text/font','font')
         font_files = [f for f in os.listdir(font_dir)]
         return {
             "required": {
