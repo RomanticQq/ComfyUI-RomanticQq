@@ -62,7 +62,8 @@ class GeminiImageAPI:
                         with open(tmp_edit_img_path, "wb") as f:
                             f.write(response.content)
                         img_list.append(open(tmp_edit_img_path, "rb"))
-                        result = self.client.images.edit(
+                        os.remove(tmp_edit_img_path)
+                    result = self.client.images.edit(
                         model=model_name,
                         image=img_list,
                         prompt=prompt,
