@@ -26,7 +26,7 @@ from .api.aigc.wordcard_api import WORDCARD
 from .api.jimeng.jimeng_t2i_3 import JIMENG_T2I_3
 from .text.text_json import TEXT_JSON
 from .text.text_kv_get_value import TEXT_KV_GET_VALUE
-from .api.tuzi.image_api import TuziImageAPI
+from .api.tuzi.gemini_image_api import GeminiImageAPI as TuziImageAPI
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
 NODE_CLASS_MAPPINGS = {

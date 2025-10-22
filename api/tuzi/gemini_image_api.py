@@ -11,7 +11,7 @@ from minio import Minio
 from datetime import datetime, timedelta
 from openai import OpenAI
 
-class TuziImageAPI:
+class GeminiImageAPI:
     def __init__(self):
         self.tmp_dir = os.path.join(os.path.dirname(__file__), "tmp")
         if not os.path.exists(self.tmp_dir):
