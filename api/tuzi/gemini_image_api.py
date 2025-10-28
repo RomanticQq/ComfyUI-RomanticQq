@@ -18,8 +18,8 @@ class GeminiImageAPI:
             os.makedirs(self.tmp_dir)
         self.keys = json.load(open(os.path.join(os.path.dirname(__file__).split('/api')[0], "keys.json"), "r"))
         self.client = OpenAI(
-            base_url=self.keys["tuzi"]["api_base"],
-            api_key=self.keys["tuzi"]["api_key"]
+            base_url=self.keys["tuzi"]["default"]["api_base"],
+            api_key=self.keys["tuzi"]["default"]["api_key"]
         )
     @classmethod
     def INPUT_TYPES(s):

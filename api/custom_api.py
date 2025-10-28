@@ -23,7 +23,7 @@ class CustomAPI:
         }
     @classmethod
     def INPUT_TYPES(s):
-        modle_names = ['Doubao', 'qwen-vl', 'qwen-max', 'qwen-turbo', 'qwen-long', 'qwen-plus', 'qwen-omni', 'qwen-flash']
+        modle_names = ['Doubao', 'qwen-vl', 'qwen-max', 'qwen-turbo', 'qwen-long', 'qwen-plus', 'qwen-omni', 'qwen-flash', 'doubao-seed-1.6']
         return {
             "required": {
                 "prompt": ("STRING",),
@@ -48,6 +48,7 @@ class CustomAPI:
             'qwen-plus':45,
             'qwen-omni':63,
             'qwen-flash':81,
+            'doubao-seed-1.6': 92,
         }
 
         print(os.getcwd())
