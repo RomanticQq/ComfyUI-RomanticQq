@@ -12,14 +12,14 @@ from datetime import datetime, timedelta
 class MINIO_UPLOAD:
     def __init__(self):
         self.tmp_dir = os.path.join(os.path.dirname(__file__), "tmp")
-        self.minio_dir = "upload"
+        self.minio_dir = "fuqiang/upload"
         if not os.path.exists(self.tmp_dir):
             os.makedirs(self.tmp_dir)
         self.keys = json.load(open(os.path.join(os.path.dirname(__file__).split('/api/')[0], "keys.json"), "r"))
         endpoint = self.keys["minio"]["endpoint"]
         access_key = self.keys["minio"]["access_key"]
         secret_key = self.keys["minio"]["secret_key"]
-        self.bucket_name = 'myminio'
+        self.bucket_name = 'user'
         self.client = Minio(endpoint, access_key=access_key, secret_key=secret_key, secure=False)
         if not self.client.bucket_exists(self.bucket_name):
             self.client.make_bucket(self.bucket_name)
