@@ -24,7 +24,8 @@ class Florence2GetWord:
     FUNCTION = "test"
     CATEGORY = "RomanticQq/text"
     def test(self, text):
-        cleaned = re.sub(r'<loc_\d+>', ' ', text)
-        words = [w.strip() for w in cleaned.split() if w.strip()] 
+        cleaned = re.sub(r'<loc_\d+>', '|||', text)
+        # 按分隔符分割，保留多词短语
+        words = [w.strip() for w in cleaned.split('|||') if w.strip()]
         res_text = ','.join(words)
         return (res_text,)

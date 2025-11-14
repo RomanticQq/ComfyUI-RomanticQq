@@ -30,7 +30,7 @@ from .api.tuzi.gemini_image_api import GeminiImageAPI
 from .api.tuzi.gemini_image_official_api import GeminiImageOfficialAPI
 from .api.jieyue.jieyue_detect_word import JIeyueDetectWordAPI
 from .api.jieyue.jieyue_detect_draw_bbox import JIeyueDetectDrawBboxAPI
-from .text.florence2_get_word import Florence2GetWord
+from .text.florence2_get_word import Florence2GetWord      
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
 NODE_CLASS_MAPPINGS = {
