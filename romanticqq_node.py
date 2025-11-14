@@ -29,6 +29,7 @@ from .text.text_kv_get_value import TEXT_KV_GET_VALUE
 from .api.tuzi.gemini_image_api import GeminiImageAPI
 from .api.tuzi.gemini_image_official_api import GeminiImageOfficialAPI
 from .api.jieyue.jieyue_detect_word import JIeyueDetectWordAPI
+from .api.jieyue.jieyue_detect_draw_bbox import JIeyueDetectDrawBboxAPI
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
 NODE_CLASS_MAPPINGS = {
@@ -63,6 +64,7 @@ NODE_CLASS_MAPPINGS = {
     "gemini_image_api": GeminiImageAPI,
     "gemini_image_official_api": GeminiImageOfficialAPI,
     "jieyue_detect_word_api": JIeyueDetectWordAPI,
+    "jieyue_detect_draw_bbox_api": JIeyueDetectDrawBboxAPI,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
@@ -98,4 +100,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "gemini_image_api": "gemini_image_api",
     "gemini_image_official_api": "gemini_image_official_api",
     "jieyue_detect_word_api": "jieyue_detect_word_api",
+    "jieyue_detect_draw_bbox_api": "jieyue_detect_draw_bbox_api",
 }
