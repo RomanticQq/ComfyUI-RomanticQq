@@ -1,7 +1,5 @@
 from .api.jimeng.seededit_api import SEEDEDIT
 from .api.upload.upload_minio import MINIO_UPLOAD
-from .api.vlm.qwenvl_omni_api import QWENVL_Omni
-from .api.vlm.qwenvl_api import QWENVL
 from .api.jimeng.jimeng_depth_2_pro_api import Jimeng_Depth_2_Pro
 from .api.jimeng.jimeng_depth_xl_api import Jimeng_Depth_Xl
 from .api.jimeng.jimeng_role_api import Jimeng_Role
@@ -31,13 +29,12 @@ from .api.tuzi.gemini_image_official_api import GeminiImageOfficialAPI
 from .api.jieyue.jieyue_detect_word import JIeyueDetectWordAPI
 from .api.jieyue.jieyue_detect_draw_bbox import JIeyueDetectDrawBboxAPI
 from .text.florence2_get_word import Florence2GetWord      
+from .text.text_json_catroon import TEXT_JSON_CATROON
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
 NODE_CLASS_MAPPINGS = {
     "seededit_api": SEEDEDIT,
     "upload_minio": MINIO_UPLOAD,
-    "qwenvl_omni_api": QWENVL_Omni,
-    "qwenvl_api": QWENVL,
     "jimeng_role_api": Jimeng_Role,
     "jimeng_depth_xl_api": Jimeng_Depth_Xl,
     "jimeng_depth_2_pro_api": Jimeng_Depth_2_Pro,
@@ -67,14 +64,13 @@ NODE_CLASS_MAPPINGS = {
     "jieyue_detect_word_api": JIeyueDetectWordAPI,
     "jieyue_detect_draw_bbox_api": JIeyueDetectDrawBboxAPI,
     "florence2_get_word": Florence2GetWord,
+    "text_json_catroon": TEXT_JSON_CATROON,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
 NODE_DISPLAY_NAME_MAPPINGS = {
     "seededit_api": "seededit_api",
     "upload_minio": "upload_minio",
-    "qwenvl_omni_api": "qwenvl_omni_api",
-    "qwenvl_api": "qwenvl_api",
     "jimeng_role_api": "jimeng_role_api",
     "jimeng_depth_xl_api": "jimeng_depth_xl_api",
     "jimeng_depth_2_pro_api": "jimeng_depth_2_pro_api",
@@ -104,4 +100,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "jieyue_detect_word_api": "jieyue_detect_word_api",
     "jieyue_detect_draw_bbox_api": "jieyue_detect_draw_bbox_api",
     "florence2_get_word": "florence2_get_word",
+    "text_json_catroon": "text_json_catroon",
 }
