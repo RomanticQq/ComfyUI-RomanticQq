@@ -30,6 +30,9 @@ from .api.jieyue.jieyue_detect_word import JIeyueDetectWordAPI
 from .api.jieyue.jieyue_detect_draw_bbox import JIeyueDetectDrawBboxAPI
 from .text.florence2_get_word import Florence2GetWord      
 from .text.text_json_catroon import TEXT_JSON_CATROON
+from .text.text_kv_to_json import TEXT_KV_TO_JSON
+from .image.image_ratio import ImageRatio
+from .number.padding_size import PaddingSize
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
 NODE_CLASS_MAPPINGS = {
@@ -65,6 +68,9 @@ NODE_CLASS_MAPPINGS = {
     "jieyue_detect_draw_bbox_api": JIeyueDetectDrawBboxAPI,
     "florence2_get_word": Florence2GetWord,
     "text_json_catroon": TEXT_JSON_CATROON,
+    "text_kv_to_json": TEXT_KV_TO_JSON,
+    "image_ratio": ImageRatio,
+    "padding_size": PaddingSize,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
@@ -101,4 +107,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "jieyue_detect_draw_bbox_api": "jieyue_detect_draw_bbox_api",
     "florence2_get_word": "florence2_get_word",
     "text_json_catroon": "text_json_catroon",
+    "text_kv_to_json": "text_kv_to_json",
+    "image_ratio": "image_ratio",
+    "padding_size": "padding_size",
 }

@@ -94,7 +94,7 @@ class CustomAPI:
                     if thinking:
                         thinking_content = completion.choices[0].message.reasoning_content
                     else:
-                        thinking_content = None
+                        thinking_content = ''
                     print("response_content: ", response_content)
                     print("thinking_content: ", thinking_content)
                     break
