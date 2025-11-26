@@ -23,21 +23,24 @@ class JIMENG_T2I_3:
         }
     @classmethod
     def INPUT_TYPES(s):
+        modle_names = ['jimeng-3.0', 'jimeng-3.1', 'jimeng-4.0']
         return {
             "required": {
                 "prompt": ("STRING",),
                 "width": ("INT", {"default": 1024, "min": 0, "max": 2048, "step": 1}),
                 "height": ("INT", {"default": 1536, "min": 0, "max": 2048, "step": 1}),
+                "model_name": (modle_names,),
                 "random_seed": ("INT", {"default": 0, "min": 0, "max": 2**32 - 1, "step": 1, "control_after_generate": True}),
+                "imgurl": ("STRING",{"default": None} ),
+
             },
         }
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "test"
     CATEGORY = "RomanticQq/api/jimeng"
-    def test(self, prompt, width, height, random_seed):
+    def test(self, prompt, width, height, model_name, random_seed, imgurl=None):
         np.random.seed(random_seed)
-        print("开始调用接口：jimeng_t2i_3")
         print("prompt: ", prompt)
         tmp_img_name = str(uuid.uuid4()) + ".jpg"
         tmp_img_path = os.path.join(self.tmp_dir, tmp_img_name)
@@ -45,18 +48,15 @@ class JIMENG_T2I_3:
         for i in range(3):
             print(f"第{i+1}次请求")
             try:
-                data = {
-                    "appId": self.keys["api"]["appId"],
-                    "clientId": self.keys["api"]["clientId"],
-                    "token": self.keys["api"]["token"],
-                    "type": 3,
-                    "model": 60,
-                    "text": prompt,
-                    "parameters": {
-                        "width": width,
-                        "height": height
-                    },
-                }   
+                if model_name == 'jimeng-3.0':
+                    data = self.jimeng_3(prompt, width, height)
+                    print("开始调用接口：jimeng_t2i_3.0")
+                elif model_name == 'jimeng-3.1':
+                    data = self.jimeng_3_1(prompt, width, height)
+                    print("开始调用接口：jimeng_t2i_3.1")
+                elif model_name == 'jimeng-4.0':
+                    data = self.jimeng_4(prompt, width, height, imgurl)
+                    print("开始调用接口：jimeng_t2i_4.0")
                 json_data = json.dumps(data)
                 response = requests.post(self.url, headers=self.headers, data=json_data)
                 # 打印响应结果
@@ -83,3 +83,58 @@ class JIMENG_T2I_3:
         os.remove(tmp_img_path)
         # return (image,)
         return (img,)
+    def jimeng_3(self, prompt, width, height):
+        data = {
+            "appId": self.keys["api"]["appId"],
+            "clientId": self.keys["api"]["clientId"],
+            "token": self.keys["api"]["token"],
+            "type": 3,
+            "model": 60,
+            "text": prompt,
+            "parameters": {
+                "width": width,
+                "height": height
+            },
+        }
+        return data
+
+    def jimeng_3_1(self, prompt, width, height):
+        data = {
+            "appId": self.keys["api"]["appId"],
+            "clientId": self.keys["api"]["clientId"],
+            "token": self.keys["api"]["token"],
+            "type": 3,
+            "model": 60,
+            "text": prompt,
+            "parameters": {
+                "width": width,
+                "height": height,
+                "version": "3.1",
+            },
+        }
+        return data
+    
+    def jimeng_4(self, prompt, width, height, imgurl=None):
+        data = {
+            "appId": self.keys["api"]["appId"],
+            "clientId": self.keys["api"]["clientId"],
+            "token": self.keys["api"]["token"],
+            "type": 3,
+            "model": 95,
+            "inputs": [
+                {
+                    "type": "text",
+                    "content": prompt
+                }
+            ],
+            "parameters": {
+                "width": width,
+                "height": height,
+            }
+        }
+        if imgurl:
+            data["inputs"].append({
+                "type": "image",
+                "content": imgurl
+            })
+        return data
