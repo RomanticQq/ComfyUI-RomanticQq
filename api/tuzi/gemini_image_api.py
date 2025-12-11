@@ -17,10 +17,11 @@ class GeminiImageAPI:
         if not os.path.exists(self.tmp_dir):
             os.makedirs(self.tmp_dir)
         self.keys = json.load(open(os.path.join(os.path.dirname(__file__).split('/api')[0], "keys.json"), "r"))
-        self.client = OpenAI(
-            base_url=self.keys["tuzi"]["default"]["api_base"],
-            api_key=self.keys["tuzi"]["default"]["api_key"]
-        )
+        if "tuzi" in self.keys.keys() and "default" in self.keys["tuzi"].keys():
+            self.client = OpenAI(
+                base_url=self.keys["tuzi"]["default"]["api_base"],
+                api_key=self.keys["tuzi"]["default"]["api_key"]
+            )
     @classmethod
     def INPUT_TYPES(s):
         modle_names = ["gemini-2.5-flash-image-vip", "gemini-2.5-flash-image"]
@@ -39,6 +40,8 @@ class GeminiImageAPI:
     FUNCTION = "test"
     CATEGORY = "RomanticQq/api/tuzi"
     def test(self, prompt, model_name,imageUrl=None, random_seed=0):
+        if "tuzi" not in self.keys.keys() or "default" not in self.keys["tuzi"].keys():
+            raise ValueError("Tuzi API keys are not configured properly.")
         np.random.seed(random_seed)
         print(os.getcwd())
         print("prompt: ", prompt)

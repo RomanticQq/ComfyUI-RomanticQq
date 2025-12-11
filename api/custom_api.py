@@ -16,15 +16,17 @@ class CustomAPI:
             os.makedirs(self.tmp_dir)
         self.url = 'http://test-api.aiedevice.com/interact/vui/ai/v1'  # 替换为实际接口URL
         self.keys = json.load(open(os.path.join(os.path.dirname(__file__).split('/api')[0], "keys.json"), "r"))
-        self.headers = {
-            "RC-DEVICE-SESSION": self.keys["api"]["RC-DEVICE-SESSION"],
-            "ailab-web-session": self.keys["api"]["ailab-web-session"],
-            "server-super-token": self.keys["api"]["server-super-token"]
-        }
-        self.dashscope_client = OpenAI(
-            api_key = self.keys["aliyun_dashscope"]["api_key"],
-            base_url=self.keys["aliyun_dashscope"]["api_base"]
-        )
+        if "api" in self.keys.keys():
+            self.headers = {
+                "RC-DEVICE-SESSION": self.keys["api"]["RC-DEVICE-SESSION"],
+                "ailab-web-session": self.keys["api"]["ailab-web-session"],
+                "server-super-token": self.keys["api"]["server-super-token"]
+            }
+        if "aliyun_dashscope" in self.keys.keys():
+            self.dashscope_client = OpenAI(
+                api_key = self.keys["aliyun_dashscope"]["api_key"],
+                base_url=self.keys["aliyun_dashscope"]["api_base"]
+            )
     @classmethod
     def INPUT_TYPES(s):
         modle_names = ['Doubao', 'qwen-vl', 'qwen-max', 'qwen-turbo', 'qwen-long', 'qwen-plus', 'qwen-omni', 'qwen-flash', 'doubao-seed-1.6', 'qwen3-vl-flash']
@@ -65,7 +67,7 @@ class CustomAPI:
             try:
                 response_content = ''
                 thinking_content = ''
-                if model_name == 'qwen3-vl-flash':
+                if model_name == 'qwen3-vl-flash' and "aliyun_dashscope" in self.keys.keys():
                     messages = [
                             {
                                 "role": "user",
@@ -98,7 +100,7 @@ class CustomAPI:
                     print("response_content: ", response_content)
                     print("thinking_content: ", thinking_content)
                     break
-                else:
+                elif "api" in self.keys.keys():
                     data = {
                         "appId": self.keys["api"]["appId"],
                         "clientId": self.keys["api"]["clientId"],

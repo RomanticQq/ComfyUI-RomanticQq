@@ -21,10 +21,11 @@ class GeminiImageOfficialAPI:
         if not os.path.exists(self.tmp_dir):
             os.makedirs(self.tmp_dir)
         self.keys = json.load(open(os.path.join(os.path.dirname(__file__).split('/api')[0], "keys.json"), "r"))
-        self.headers = {
-        'Authorization': f"Bearer {self.keys["tuzi"]["gemini_official"]["api_key"]}",
-        'Content-Type': 'application/json'
-        }
+        if "tuzi" in self.keys.keys() and "gemini_official" in self.keys["tuzi"].keys():
+            self.headers = {
+            'Authorization': f"Bearer {self.keys["tuzi"]["gemini_official"]["api_key"]}",
+            'Content-Type': 'application/json'
+            }
     @classmethod
     def INPUT_TYPES(s):
         aspectRatio_arr= ['1:1','2:3','3:2','3:4','4:3','4:5','5:4','9:16','16:9','21:9']
@@ -43,6 +44,8 @@ class GeminiImageOfficialAPI:
     FUNCTION = "test"
     CATEGORY = "RomanticQq/api/tuzi"
     def test(self, prompt,aspectRatio, imageUrl=None, random_seed=0):
+        if "tuzi" not in self.keys.keys() or "gemini_official" not in self.keys["tuzi"].keys():
+            raise ValueError("Tuzi Gemini Official API keys are not configured properly.")
         conn = http.client.HTTPSConnection("api.tu-zi.com")
         np.random.seed(random_seed)
         print(os.getcwd())
