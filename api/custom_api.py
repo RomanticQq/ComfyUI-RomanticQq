@@ -46,6 +46,12 @@ class CustomAPI:
     CATEGORY = "RomanticQq/api"
     def test(self, prompt, model_name,imageUrl=None, random_seed=0, thinking=False):
         np.random.seed(random_seed)
+
+        if model_name == 'qwen3-vl-flash':
+            assert "aliyun_dashscope" in self.keys.keys(), "Dashscope API keys are not configured properly."
+        else:
+            assert "api" in self.keys.keys(), "API keys are not configured properly."
+
         # model_id 对应模型
         model_kv = {
             'Doubao':22,
@@ -67,7 +73,7 @@ class CustomAPI:
             try:
                 response_content = ''
                 thinking_content = ''
-                if model_name == 'qwen3-vl-flash' and "aliyun_dashscope" in self.keys.keys():
+                if model_name == 'qwen3-vl-flash':
                     messages = [
                             {
                                 "role": "user",
@@ -100,7 +106,7 @@ class CustomAPI:
                     print("response_content: ", response_content)
                     print("thinking_content: ", thinking_content)
                     break
-                elif "api" in self.keys.keys():
+                else:
                     data = {
                         "appId": self.keys["api"]["appId"],
                         "clientId": self.keys["api"]["clientId"],
