@@ -34,6 +34,7 @@ from .text.text_kv_to_json import TEXT_KV_TO_JSON
 from .image.image_ratio import ImageRatio
 from .number.padding_size import PaddingSize
 from .tarot.tarot_slect import tarot_slect
+from .video.get_video_frame import GetFirstLastVideoFrames
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
 NODE_CLASS_MAPPINGS = {
@@ -73,6 +74,7 @@ NODE_CLASS_MAPPINGS = {
     "image_ratio": ImageRatio,
     "padding_size": PaddingSize,
     "tarot_slect": tarot_slect,
+    "GetFirstLastVideoFrames": GetFirstLastVideoFrames
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
@@ -113,4 +115,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "image_ratio": "image_ratio",
     "padding_size": "padding_size",
     "tarot_slect": "tarot_slect",
+     "GetFirstLastVideoFrames": "GetFirstLastVideoFrames"
 }
