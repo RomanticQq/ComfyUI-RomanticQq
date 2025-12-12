@@ -9,7 +9,7 @@ import requests
 from minio import Minio
 from datetime import datetime, timedelta
 
-class JIMENG_T2I_3:
+class JIMENG_T2I_I2I:
     def __init__(self):
         self.tmp_dir = os.path.join(os.path.dirname(__file__), "tmp")
         if not os.path.exists(self.tmp_dir):

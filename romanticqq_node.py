@@ -21,7 +21,7 @@ from .text.text_translate import Text_Translation
 from .text.random_text_v2 import RANDOM_TEXT_V2
 from .api.custom_api import CustomAPI
 from .api.aigc.wordcard_api import WORDCARD
-from .api.jimeng.jimeng_t2i_3 import JIMENG_T2I_3
+from .api.jimeng.jimeng_t2i_I2I import JIMENG_T2I_I2I
 from .text.text_json import TEXT_JSON
 from .text.text_kv_get_value import TEXT_KV_GET_VALUE
 from .api.tuzi.gemini_image_api import GeminiImageAPI
@@ -60,7 +60,7 @@ NODE_CLASS_MAPPINGS = {
     "random_text_v2": RANDOM_TEXT_V2,
     "custom_api": CustomAPI,
     "wordcard_api": WORDCARD,
-    "jimeng_t2i_3": JIMENG_T2I_3,
+    "jimeng_t2i_3": JIMENG_T2I_I2I,
     "text_json": TEXT_JSON,
     "text_kv_get_value": TEXT_KV_GET_VALUE,
     "gemini_image_api": GeminiImageAPI,
@@ -100,7 +100,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "random_text_v2": "random_text_v2",
     "custom_api": "custom_api",
     "wordcard_api": "wordcard_api",
-    "jimeng_t2i_3": "jimeng_t2i_3",
+    "jimeng_t2i_3": "jimeng_t2i_i2i",
     "text_json": "text_json",
     "text_kv_get_value": "text_kv_get_value",
     "gemini_image_api": "gemini_image_api",
