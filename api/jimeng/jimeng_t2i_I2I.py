@@ -23,7 +23,7 @@ class JIMENG_T2I_I2I:
         }
     @classmethod
     def INPUT_TYPES(s):
-        modle_names = ['jimeng-3.0', 'jimeng-3.1', 'jimeng-4.0']
+        modle_names = ['jimeng-3.0', 'jimeng-3.1', 'jimeng-4.0', 'jimeng-4.5']
         return {
             "required": {
                 "prompt": ("STRING",),
@@ -57,6 +57,9 @@ class JIMENG_T2I_I2I:
                 elif model_name == 'jimeng-4.0':
                     data = self.jimeng_4(prompt, width, height, imgurl)
                     print("开始调用接口：jimeng_t2i_4.0")
+                elif model_name == 'jimeng-4.5':
+                    data = self.jimeng_4_5(prompt, width, height, imgurl)
+                    print("开始调用接口：jimeng_t2i_4.5")
                 json_data = json.dumps(data)
                 response = requests.post(self.url, headers=self.headers, data=json_data)
                 # 打印响应结果
@@ -121,6 +124,30 @@ class JIMENG_T2I_I2I:
             "token": self.keys["api"]["token"],
             "type": 3,
             "model": 95,
+            "inputs": [
+                {
+                    "type": "text",
+                    "content": prompt
+                }
+            ],
+            "parameters": {
+                "width": width,
+                "height": height,
+            }
+        }
+        if imgurl:
+            data["inputs"].append({
+                "type": "image",
+                "content": imgurl
+            })
+        return data
+    def jimeng_4_5(self, prompt, width, height, imgurl=None):
+        data = {
+            "appId": self.keys["api"]["appId"],
+            "clientId": self.keys["api"]["clientId"],
+            "token": self.keys["api"]["token"],
+            "type": 3,
+            "model": 101,
             "inputs": [
                 {
                     "type": "text",
